@@ -28,13 +28,13 @@ public class CM79 {
             }
             result[i]=priorityQueueBig.peek();
             i++;
-
         }
+
         return  result;
     }
 
     public static void main(String[] args) {
-        int arr[]={1,2,3,4,5,6};
+        int arr[]={10,34,3,20,34,45};
         getMiddle(arr,arr.length);
     }
 }
