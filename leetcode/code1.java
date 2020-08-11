@@ -5,31 +5,41 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.*;
 import java.lang.*;
-public class code1{
-    public static void reOrderArray(int [] array){
-        int len= array.length;
-        int even=0,odd=0;
-        while(odd<len&&even<len){
-            while(even<len && array[even]%2!=0) //找到第一个偶数even
-                even++;
-            odd=even+1;
-            //找偶数之后的第一个奇数
-            while(odd<len && array[odd]%2==0)
-                odd++;
-            if(odd>=len)
-                break;
-            int temp=array[odd];
-            for(int i=odd;i>even;i--)
-                array[i]= array[i-1];
-            array[even]=temp;
-            even++;
-        }
-    }
+import java.util.concurrent.ThreadPoolExecutor;
+
+public class code1 {
+
     public static void main(String[] args) {
-       int [] array={2,4,3,6,2,1};
-       reOrderArray(array);
-        for(int i=0;i< array.length;i++){
-            System.out.println(array[i]);
+        ThreadPoolExecutor
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        ArrayList<String> p=new ArrayList<>();
+        ArrayList<String> v=new ArrayList<>();
+        for(int i=0;i<m;i++){
+            String s=sc.next();
+            if(s.charAt(0)=='V'){
+                v.add(s);
+            }
+            else{
+                p.add(s);
+            }
+        }
+        ArrayList<String> result=new ArrayList<>();
+        int off=0;
+        for(int i=0;i<v.size();i++){
+            result.add(v.get(i));
+            if(i%n==n-2){
+                if(off<p.size()){
+                    result.add(p.get(off));
+                    off++;
+                }
+            }
+        }
+        System.out.println(result.size());
+        for(String r:result){
+            System.out.println(r);
         }
     }
 }
+
